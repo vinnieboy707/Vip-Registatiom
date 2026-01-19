@@ -1,4 +1,6 @@
 -- Insert default fee structure
+-- Note: fee_type column has UNIQUE constraint defined in migration 20240119000001_initial_schema.sql
+-- ON CONFLICT clause ensures this seed can be run multiple times safely
 INSERT INTO public.fees (fee_type, description, amount, state) VALUES
     ('registration_new', 'New vehicle registration', 150.00, 'CA'),
     ('registration_renewal', 'Registration renewal', 75.00, 'CA'),

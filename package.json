@@ -1,5 +1,5 @@
 {
-  "name": "vip-registatiom",
+  "name": "vip-registration",
   "version": "1.0.0",
   "description": "Production-grade DMV vehicle registration full-stack web application",
   "main": "dist/backend/src/server.js",

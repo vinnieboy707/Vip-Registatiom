@@ -66,7 +66,7 @@ const App: React.FC = () => {
           >
             <div className="container text-center">
               <p className="text-secondary">
-                © 2024 DMV Vehicle Registration Platform. All rights reserved.
+                © 2026 DMV Vehicle Registration Platform. All rights reserved.
               </p>
               <p className="text-secondary text-sm" style={{ marginTop: '0.5rem' }}>
                 Production-grade full-stack application with enterprise security
