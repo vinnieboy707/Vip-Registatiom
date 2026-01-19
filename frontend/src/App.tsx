@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import VehicleLookup from './pages/VehicleLookup';
 import Registration from './pages/Registration';
 import TitleTransfer from './pages/TitleTransfer';
+import VehicleReport from './pages/VehicleReport';
 
 const App: React.FC = () => {
   return (
@@ -51,6 +52,14 @@ const App: React.FC = () => {
                 element={
                   <PrivateRoute>
                     <TitleTransfer />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/vehicle-report"
+                element={
+                  <PrivateRoute>
+                    <VehicleReport />
                   </PrivateRoute>
                 }
               />

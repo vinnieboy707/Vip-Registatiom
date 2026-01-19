@@ -40,6 +40,11 @@ const Navbar: React.FC = () => {
                   Title Transfer
                 </Link>
               </li>
+              <li>
+                <Link to="/vehicle-report" className="nav-link">
+                  Vehicle Report
+                </Link>
+              </li>
             </ul>
             <div className="flex items-center gap-2">
               <span className="text-sm text-secondary">

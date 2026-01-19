@@ -22,7 +22,14 @@ This application integrates with **actual government databases and APIs**:
   - Stolen vehicle reports
   - Title information
 
-### 3. NCIC (National Crime Information Center) - For Stolen Vehicles
+### 3. NHTSA Recalls API (NEW)
+- **API**: https://api.nhtsa.gov/recalls
+- **Free, No API Key Required**
+- **Real Recall Data**: Campaign numbers, components, summaries, remedies
+- **Coverage**: All U.S. safety recalls
+- **Real-time Updates**: Live data from NHTSA database
+
+### 4. NCIC (National Crime Information Center) - For Stolen Vehicles
 - Requires authorized access and API credentials
 - Real-time stolen vehicle verification
 
@@ -30,11 +37,15 @@ This application integrates with **actual government databases and APIs**:
 
 ✅ **Vehicle Lookup by VIN** - Uses NHTSA database (170+ million vehicles)  
 ✅ **Accurate Vehicle Specifications** - Real make, model, year, engine, body type  
+✅ **NHTSA Recall Integration** - Real-time safety recall data from government database  
+✅ **Automated Vehicle Reports** - Comprehensive reports with ownership history and recalls  
+✅ **License Plate Lookup** - Search by plate number and state  
 ✅ **State DMV Integration** - Connect to your state's DMV API  
 ✅ **Real Fee Calculations** - State-specific registration and transfer fees  
 ✅ **Stolen Vehicle Check** - Integration with law enforcement databases  
 ✅ **Title Information** - When state DMV API is configured  
 ✅ **Ownership Records** - Historical data from DMV sources  
+✅ **Risk Assessment** - Automated analysis with buyer recommendations  
 
 ## 🔧 Setup Instructions
 

@@ -14,6 +14,8 @@ import authRoutes from './routes/authRoutes';
 import vehicleRoutes from './routes/vehicleRoutes';
 import titleTransferRoutes from './routes/titleTransferRoutes';
 import feeRoutes from './routes/feeRoutes';
+import reportRoutes from './routes/reportRoutes';
+import recallRoutes from './routes/recallRoutes';
 
 import { errorHandler, notFound, requestLogger } from './middleware/errorHandler';
 
@@ -107,6 +109,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/title-transfers', titleTransferRoutes);
 app.use('/api/fees', feeRoutes);
+app.use('/api/reports', reportRoutes);
+app.use('/api/recalls', recallRoutes);
 
 // Root route
 app.get('/', (_req, res) => {

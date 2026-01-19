@@ -62,4 +62,33 @@ export const vehicleService = {
     const response = await api.get(`/vehicles/vin/${vin}/ownership-history`);
     return response.data;
   },
+
+  async generateReport(vin: string): Promise<any> {
+    const response = await api.get(`/reports/vin/${vin}`);
+    return response.data.data;
+  },
+
+  async generateReportByPlate(plate: string, state: string): Promise<any> {
+    const response = await api.get(`/reports/plate/${state}/${plate}`);
+    return response.data.data;
+  },
+
+  async downloadTextReport(vin: string): Promise<string> {
+    const response = await api.get(`/reports/vin/${vin}/text`, {
+      responseType: 'text',
+    });
+    return response.data;
+  },
+
+  async getRecallsByVIN(vin: string): Promise<any> {
+    const response = await api.get(`/recalls/vin/${vin}`);
+    return response.data.data;
+  },
+
+  async getRecallsByVehicle(make: string, model: string, year: number): Promise<any> {
+    const response = await api.get('/recalls/vehicle', {
+      params: { make, model, year },
+    });
+    return response.data.data;
+  },
 };
