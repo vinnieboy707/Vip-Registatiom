@@ -22,6 +22,7 @@ interface OnboardingTourProps {
 const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSkip }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+  const [spotlightRect, setSpotlightRect] = useState<DOMRect | null>(null);
 
   const step = steps[currentStep];
 
@@ -30,6 +31,7 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
       const element = document.querySelector(step.targetSelector);
       if (element) {
         const rect = element.getBoundingClientRect();
+        setSpotlightRect(rect);
         
         // Calculate tooltip position based on target element
         let top = 0;
@@ -37,23 +39,23 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
 
         switch (step.position) {
           case 'bottom':
-            top = rect.bottom + 20;
+            top = rect.bottom + window.scrollY + 20;
             left = rect.left + rect.width / 2;
             break;
           case 'top':
-            top = rect.top - 20;
+            top = rect.top + window.scrollY - 20;
             left = rect.left + rect.width / 2;
             break;
           case 'left':
-            top = rect.top + rect.height / 2;
+            top = rect.top + window.scrollY + rect.height / 2;
             left = rect.left - 20;
             break;
           case 'right':
-            top = rect.top + rect.height / 2;
+            top = rect.top + window.scrollY + rect.height / 2;
             left = rect.right + 20;
             break;
           default:
-            top = window.innerHeight / 2;
+            top = window.innerHeight / 2 + window.scrollY;
             left = window.innerWidth / 2;
         }
 
@@ -64,8 +66,9 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
       }
     } else {
       // Center the tooltip if no target
+      setSpotlightRect(null);
       setTooltipPosition({
-        top: window.innerHeight / 2,
+        top: window.innerHeight / 2 + window.scrollY,
         left: window.innerWidth / 2,
       });
     }
@@ -90,11 +93,19 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
   return (
     <>
       {/* Overlay */}
-      <div className="onboarding-overlay" />
+      <div className="onboarding-overlay" onClick={onSkip} />
 
       {/* Spotlight on target element */}
-      {step.targetSelector && (
-        <div className="onboarding-spotlight" data-target={step.targetSelector} />
+      {spotlightRect && (
+        <div 
+          className="onboarding-spotlight"
+          style={{
+            top: `${spotlightRect.top + window.scrollY}px`,
+            left: `${spotlightRect.left}px`,
+            width: `${spotlightRect.width}px`,
+            height: `${spotlightRect.height}px`,
+          }}
+        />
       )}
 
       {/* Tooltip */}
