@@ -1,0 +1,13 @@
+FROM denoland/deno:1.37.0
+
+WORKDIR /app
+
+# Edge Functions
+COPY supabase/functions ./functions
+
+# Make sure functions are executable
+RUN chmod -R +x ./functions
+
+EXPOSE 8000
+
+CMD ["deno", "run", "--allow-all", "--watch", "./functions"]
