@@ -1,0 +1,220 @@
+/* Onboarding Overlay */
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Spotlight Effect */
+.onboarding-spotlight {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  border: 3px solid var(--primary-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75),
+              0 0 20px rgba(37, 99, 235, 0.5);
+  transition: all 0.3s ease-in-out;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75),
+                0 0 20px rgba(37, 99, 235, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75),
+                0 0 30px rgba(37, 99, 235, 0.8);
+  }
+}
+
+/* Tooltip */
+.onboarding-tooltip {
+  position: fixed;
+  z-index: 10000;
+  background: var(--bg-primary);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(0, 0, 0, 0.3);
+  max-width: 480px;
+  width: 90%;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Position variants */
+.onboarding-tooltip.center {
+  transform: translate(-50%, -50%);
+}
+
+.onboarding-tooltip.top {
+  transform: translate(-50%, -100%);
+  margin-top: -20px;
+}
+
+.onboarding-tooltip.bottom {
+  transform: translate(-50%, 0);
+  margin-top: 20px;
+}
+
+.onboarding-tooltip.left {
+  transform: translate(-100%, -50%);
+  margin-left: -20px;
+}
+
+.onboarding-tooltip.right {
+  transform: translate(0, -50%);
+  margin-left: 20px;
+}
+
+/* Tooltip Header */
+.onboarding-tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.onboarding-tooltip-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.onboarding-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.onboarding-close-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Tooltip Body */
+.onboarding-tooltip-body {
+  padding: 1.5rem;
+}
+
+.onboarding-tooltip-body p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+/* Tooltip Footer */
+.onboarding-tooltip-footer {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+
+/* Progress Bar */
+.onboarding-progress {
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.onboarding-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease-out;
+  border-radius: 2px;
+}
+
+/* Step Indicator */
+.onboarding-step-indicator {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Actions */
+.onboarding-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .onboarding-tooltip {
+    max-width: 90%;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+
+  .onboarding-tooltip-header {
+    padding: 1rem 1rem 0.75rem 1rem;
+  }
+
+  .onboarding-tooltip-header h3 {
+    font-size: 1.125rem;
+  }
+
+  .onboarding-tooltip-body {
+    padding: 1rem;
+  }
+
+  .onboarding-tooltip-footer {
+    padding: 0.75rem 1rem 1rem 1rem;
+  }
+
+  .onboarding-actions {
+    justify-content: center;
+  }
+
+  .onboarding-actions .btn {
+    flex: 1;
+    min-width: 80px;
+  }
+}
+
+/* Animations for elements being highlighted */
+[data-onboarding-highlight] {
+  position: relative;
+  z-index: 10000;
+}
