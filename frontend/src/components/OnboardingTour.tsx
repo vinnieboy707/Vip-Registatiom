@@ -61,8 +61,12 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
 
         setTooltipPosition({ top, left });
 
-        // Scroll element into view
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Respect user's motion preferences
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        element.scrollIntoView({ 
+          behavior: prefersReducedMotion ? 'auto' : 'smooth', 
+          block: 'center' 
+        });
       }
     } else {
       // Center the tooltip if no target
@@ -88,12 +92,26 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ steps, onComplete, onSk
     }
   };
 
+  const handleOverlayKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSkip();
+    }
+  };
+
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
     <>
       {/* Overlay */}
-      <div className="onboarding-overlay" onClick={onSkip} />
+      <div 
+        className="onboarding-overlay" 
+        onClick={onSkip}
+        onKeyDown={handleOverlayKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label="Close onboarding tour"
+      />
 
       {/* Spotlight on target element */}
       {spotlightRect && (

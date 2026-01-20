@@ -6,7 +6,7 @@ import OnboardingTour, { OnboardingStep } from '../components/OnboardingTour';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
-  const { isOnboardingComplete, shouldShowOnboarding, startOnboarding, completeOnboarding, skipOnboarding } = useOnboarding();
+  const { isOnboardingComplete, startOnboarding, completeOnboarding, skipOnboarding } = useOnboarding();
   const [showTour, setShowTour] = useState(false);
 
   // Define onboarding steps
@@ -57,13 +57,6 @@ const Dashboard: React.FC = () => {
       position: 'center',
     },
   ];
-
-  useEffect(() => {
-    // Show onboarding on first login
-    if (!isOnboardingComplete && shouldShowOnboarding) {
-      setShowTour(true);
-    }
-  }, [isOnboardingComplete, shouldShowOnboarding]);
 
   // Trigger onboarding automatically on first dashboard visit
   useEffect(() => {
