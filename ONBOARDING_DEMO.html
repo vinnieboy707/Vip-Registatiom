@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Onboarding System - Demo</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #10b981;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.625rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.625rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .demo-note {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .demo-note h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="demo-note">
+            <h2>🚀 AI Onboarding System Demo</h2>
+            <p>The onboarding system has been successfully implemented!</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+                This interactive tour will automatically appear when users log in for the first time.
+            </p>
+        </div>
+
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Welcome back, Demo User!</h1>
+                <p class="text-secondary">
+                    Role: <span class="badge">agent</span>
+                </p>
+            </div>
+            <button class="btn" onclick="alert('In the full app, this would restart the onboarding tour!')">
+                📚 Restart Tour
+            </button>
+        </div>
+
+        <h2>Quick Actions</h2>
+        <div class="grid">
+            <div class="card" data-onboarding="vehicle-lookup" style="cursor: pointer;">
+                <h3>🔍 Vehicle Lookup</h3>
+                <p>Search for vehicle information by VIN or license plate</p>
+            </div>
+
+            <div class="card" data-onboarding="registration" style="cursor: pointer;">
+                <h3>📝 Register Vehicle</h3>
+                <p>File new registration or renew existing registration</p>
+            </div>
+
+            <div class="card" data-onboarding="title-transfer" style="cursor: pointer;">
+                <h3>🔄 Title Transfer</h3>
+                <p>Process title transfers including family and out-of-state</p>
+            </div>
+        </div>
+
+        <h2>Implementation Details</h2>
+        <div class="card">
+            <h3>✅ Features Implemented</h3>
+            <ul style="margin-left: 1.5rem; line-height: 2; color: var(--text-secondary);">
+                <li><strong>OnboardingTour Component</strong> - Interactive step-by-step guide</li>
+                <li><strong>OnboardingContext</strong> - State management with React Context</li>
+                <li><strong>Spotlight Effects</strong> - Visual highlighting of UI elements</li>
+                <li><strong>Progress Tracking</strong> - Shows completion progress</li>
+                <li><strong>localStorage Persistence</strong> - Remembers completion status</li>
+                <li><strong>Restart Functionality</strong> - Users can replay the tour anytime</li>
+                <li><strong>Responsive Design</strong> - Works on all device sizes</li>
+                <li><strong>Smooth Animations</strong> - Professional transitions and effects</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>📋 Onboarding Steps</h3>
+            <ol style="margin-left: 1.5rem; line-height: 2; color: var(--text-secondary);">
+                <li><strong>Welcome</strong> - Introduction to the platform</li>
+                <li><strong>Dashboard</strong> - Overview of the central hub</li>
+                <li><strong>Vehicle Lookup</strong> - How to search for vehicles</li>
+                <li><strong>Registration</strong> - Filing registrations and renewals</li>
+                <li><strong>Title Transfer</strong> - Processing title transfers</li>
+                <li><strong>Features</strong> - Platform capabilities overview</li>
+                <li><strong>Completion</strong> - Getting started guide</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h3>🎯 User Experience Benefits</h3>
+            <div class="grid" style="margin-top: 1rem;">
+                <div>
+                    <h4 style="color: var(--primary-color);">For New Users</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li>Faster onboarding</li>
+                        <li>Reduced confusion</li>
+                        <li>Better feature discovery</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary-color);">For Administrators</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li>Reduced support tickets</li>
+                        <li>Improved adoption rates</li>
+                        <li>Better user engagement</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #f59e0b;">For Business</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li>Lower training costs</li>
+                        <li>Faster time-to-value</li>
+                        <li>Higher satisfaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3>🔧 How to Test</h3>
+            <ol style="margin-left: 1.5rem; line-height: 2; margin-top: 1rem;">
+                <li>Start the development server: <code style="background: rgba(0,0,0,0.2); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">npm run dev</code></li>
+                <li>Clear localStorage to simulate a new user</li>
+                <li>Log in to the application</li>
+                <li>The onboarding tour will automatically appear</li>
+                <li>Navigate through all 7 steps</li>
+                <li>Try the "Skip" and "Previous" buttons</li>
+                <li>Click "Restart Tour" to replay</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h3>📚 Documentation</h3>
+            <p>Comprehensive documentation is available in <code>/docs/ONBOARDING.md</code> including:</p>
+            <ul style="margin-left: 1.5rem; line-height: 2; color: var(--text-secondary); margin-top: 0.5rem;">
+                <li>Detailed feature descriptions</li>
+                <li>Customization guide</li>
+                <li>Usage examples</li>
+                <li>Troubleshooting tips</li>
+                <li>Future enhancement ideas</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
