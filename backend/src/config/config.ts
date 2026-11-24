@@ -1,6 +1,7 @@
-import dotenv from 'dotenv';
+import { loadEnv } from './loadEnv';
 
-dotenv.config();
+// Keys come from the one shared secrets file (see ./loadEnv.ts).
+loadEnv({ project: 'vip' });
 
 const isProduction = process.env.NODE_ENV === 'production';
 
